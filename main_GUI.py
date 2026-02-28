@@ -223,16 +223,16 @@ def slope_from_triangle():
         return
 
     # Perpendicular (Y)
-    y2_l = int(simpledialog.askstring("Y2", "Y2 large boxes:"))
-    y2_s = int(simpledialog.askstring("Y2", "Y2 small boxes:"))
-    y1_l = int(simpledialog.askstring("Y1", "Y1 large boxes:"))
-    y1_s = int(simpledialog.askstring("Y1", "Y1 small boxes:"))
+    y2_l = int(simpledialog.askstring("Y2", "Y2 large boxes-perpendicular:"))
+    y2_s = int(simpledialog.askstring("Y2", "Y2 small boxes-perpendicular:"))
+    y1_l = int(simpledialog.askstring("Y1", "Y1 large boxes-perpendicular:"))
+    y1_s = int(simpledialog.askstring("Y1", "Y1 small boxes-perpendicular:"))
 
     # Base (X)
-    x2_l = int(simpledialog.askstring("X2", "X2 large boxes:"))
-    x2_s = int(simpledialog.askstring("X2", "X2 small boxes:"))
-    x1_l = int(simpledialog.askstring("X1", "X1 large boxes:"))
-    x1_s = int(simpledialog.askstring("X1", "X1 small boxes:"))
+    x2_l = int(simpledialog.askstring("X2", "X2 large boxes-base:"))
+    x1_l = int(simpledialog.askstring("X1", "X1 large boxes-base:"))
+    x2_s = int(simpledialog.askstring("X2", "X2 small boxes-base:"))
+    x1_s = int(simpledialog.askstring("X1", "X1 small boxes-base:"))
 
     ux, sx, min_x = scale["x"]
     uy, sy, min_y = scale["y"]
