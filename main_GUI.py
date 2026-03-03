@@ -11,6 +11,7 @@ X = []
 Y = []
 scale = {}   # {"x":[unit, small, min], "y":[unit, small, min]}
 triangle_artists = [] #Dummy
+highlight_artists = [] #Dummy
 
 # ---------------- CORE FUNCTIONS ----------------
 
@@ -98,6 +99,25 @@ def generate_graph():
 
     # Make grid below data points
     ax.set_axisbelow(True)
+
+    #Add scale info to the graph
+
+    # Remove previous scale text if exists
+    if hasattr(generate_graph, "scale_text"):
+        generate_graph.scale_text.remove()
+    scale_string = (
+    f"Scale:\n"
+    f"X → L: {round(unit_x,4)}  S: {round(small_x,5)}\n"
+    f"Y → L: {round(unit_y,4)}  S: {round(small_y,5)}"
+)
+    generate_graph.scale_text = fig.text(
+        0.89,0.96,                # Figure coordinates (outside axes)
+        scale_string,
+        ha='right',
+        va='top',
+        fontsize=9,
+        bbox=dict(boxstyle="round", facecolor="white", alpha=0.9)
+)
 
     canvas.draw()
 
@@ -230,8 +250,8 @@ def slope_from_triangle():
 
     # Base (X)
     x2_l = int(simpledialog.askstring("X2", "X2 large boxes-base:"))
-    x1_l = int(simpledialog.askstring("X1", "X1 large boxes-base:"))
     x2_s = int(simpledialog.askstring("X2", "X2 small boxes-base:"))
+    x1_l = int(simpledialog.askstring("X1", "X1 large boxes-base:"))
     x1_s = int(simpledialog.askstring("X1", "X1 small boxes-base:"))
 
     ux, sx, min_x = scale["x"]
@@ -264,15 +284,31 @@ def slope_from_triangle():
     # Hypotenuse
     line3, = ax.plot([x1, x2], [y1, y2])
     # Points
-    points = ax.scatter([x1, x2], [y1, y2])
+    points = ax.scatter([x1, x2], [y1, y2], color='red')
 
     triangle_artists = [line1, line2, line3, points]
+
+    # Base label (midpoint of base)
+    base_text = ax.text(
+        (x1 + x2) / 2,
+        y1,
+        f"Base = {round(base,3)}",
+        va='top'
+    )
+
+    # Perpendicular label
+    perp_text = ax.text(
+        x2,
+        (y1 + y2) / 2,
+        f"Perp = {round(perp,3)}",
+        ha='left'
+    )
+    triangle_artists.extend([base_text, perp_text])
 
     canvas.draw()
 
     messagebox.showinfo("Slope Calculation",
-                        f"tan(θ) = {round(perp,4)} / {round(base,4)}\n"
-                        f"Slope = {round(slope,5)}")
+                        f"tan(θ) = {round(perp,4)} / {round(base,4)}\n")
 
 
 # ---------------- GUI SETUP ----------------
