@@ -74,13 +74,7 @@ This tool was built to **automate scale calculation and graph mapping**, while s
    git clone https://github.com/yourusername/Physical-Graph-Plotting-Assistant.git
    cd Physical-Graph-Plotting-Assistant
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-
-3. Run the application:
-   ```bash
-   python main_GUI.py
+2. Double-click on PlotAssistant.exe
 
 ---
 
@@ -90,7 +84,8 @@ Physical-Graph-Plotting-Assistant\
 ├── requirements.txt\
 ├── README.md\
 ├── screenshots\
-└── assets
+├── assets\
+└── PlotAssistant.exe
 
 ---
 
