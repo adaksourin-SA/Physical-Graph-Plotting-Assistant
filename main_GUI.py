@@ -4,6 +4,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import numpy as np
 import os
+import sys
 
 # ---------------- GLOBAL VARIABLES ----------------
 
@@ -355,9 +356,12 @@ tk.Button(button_frame,
           text="Calculate Slope (Triangle Method)",
           command=slope_from_triangle).pack(side=tk.LEFT, padx=5)
 
+try:
+    BASE_DIR = sys._MEIPASS  # PyInstaller temp folder
+except:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-icon_path = os.path.join(BASE_DIR,"assests", "refreshs.png")
+icon_path = os.path.join(BASE_DIR,"assets", "refreshs.png")
 
 refresh_icon = tk.PhotoImage(file=icon_path)
 ref_img = tk.PhotoImage(file=icon_path)
