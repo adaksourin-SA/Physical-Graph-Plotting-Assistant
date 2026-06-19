@@ -65,6 +65,8 @@ This tool was built to **automate scale calculation and graph mapping**, while s
 
 ![Main GUI](screenshots/3.2.jpg)
 
+![Main GUI](screenshots/3.3.jpg)
+
 ---
 
 ## ⚡ How to Run
